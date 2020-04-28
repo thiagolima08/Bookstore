@@ -1,0 +1,23 @@
+<div class="container">
+  <div *ngFor="let b of books">
+    <div *ngIf="b.categoria=='infantojuvenil'">
+      <mat-card class="example-card">
+        <mat-card-actions  style="text-align: end;margin-bottom: 0;padding: 0;">
+          <button mat-mini-fab color="warn" style="font-size: 16px;" matTooltip="Adicionar ao carrinho"
+          aria-label="Button that displays a tooltip when focused or hovered over" (click)="IncrementaCart(b.id)">+</button>
+        </mat-card-actions>
+      <a [routerLink]="['booksell',b.id]" style="text-decoration: none;color: rgba(0, 0, 0, 0.87);">
+        <img mat-card-image src="{{b.imageUrl}}" alt="Photo of book {{b.titulo}}">
+        <mat-card-header style="height: 90px;">
+          <mat-card-title style="font-size: 16px;">{{b.titulo}}</mat-card-title>
+          <mat-card-subtitle>{{b.autor}}</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content style="font-weight: bold;font-size: 24px;margin-bottom: 0;">
+          <p [innerHTML]="b.preco.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'}) ">
+          </p>
+        </mat-card-content>
+      </a>
+    </mat-card>
+    </div>
+  </div>
+</div>
