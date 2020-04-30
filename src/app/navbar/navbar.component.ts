@@ -42,7 +42,7 @@ export class NavbarComponent implements OnInit {
   setTotal(){
     this.total = this.booklist
       .map(b=>b.preco)
-      .reduce((total,preco)=> total+=preco);
+      .reduce((total,preco) => total+=preco);
   }
 
   deleteItemList(id){

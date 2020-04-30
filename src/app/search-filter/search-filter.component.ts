@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, Input } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppServiceService } from '../app-service.service';
 import { IncrementaCartService } from './../incrementa-cart.service';
+import { AppComponent } from './../app.component';
 
 
 @Component({
@@ -12,18 +13,26 @@ import { IncrementaCartService } from './../incrementa-cart.service';
 })
 
 
-export class SearchFilterComponent implements OnInit {
+export class SearchFilterComponent implements OnChanges {
 
   books=[];
   booklist = [];
-  input:String;
+  @Input() input:String;
 
-  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar){}
+  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar,private destroyComp: AppComponent){}
 
-  ngOnInit(): void {
-    this.input = this.AppServiceService.getInput().value;
-    console.log(this.input)
-    this.books = this.AppServiceService.getBooks().filter(b => b.titulo.toLowerCase().includes(this.input.toLowerCase()) || b.autor.toLowerCase().includes(this.input.toLowerCase()))
+  ngOnChanges(): void {
+    if(this.input){
+      this.books = this.AppServiceService.getBooks().filter(b => b.titulo.toLowerCase().includes(this.input.toLowerCase()) || b.autor.toLowerCase().includes(this.input.toLowerCase()))
+    }
+  }
+
+  ngOnDestroy(){
+    console.log("ngOnDestroy")
+  }
+
+  destruir(){
+    this.destroyComp.destroy();
   }
 
   IncrementaCart(id){
