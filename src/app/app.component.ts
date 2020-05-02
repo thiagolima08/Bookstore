@@ -22,8 +22,9 @@ export class AppComponent {
   number:number=0;
   booklist=[];
   total:number=0;
+  history=[];
 
-  constructor(private IncrementaCartService: IncrementaCartService, private AppServiceService: AppServiceService, router: Router) {
+  constructor(private IncrementaCartService: IncrementaCartService, router: Router) {
     this.router = router;
    }
 
@@ -40,11 +41,16 @@ export class AppComponent {
   }
 
   bookSearch(){
-      this.inputPai = this.campoSearch.nativeElement.value;
-      this.AppServiceService.setInput(this.inputPai);
+    this.inputPai = this.campoSearch.nativeElement.value;
+    this.history.push(this.inputPai);
+    if(this.history.length > 2){
+      this.history.shift()
+    }
+    if((this.inputPai) && (this.inputPai != this.history[this.history.length-2])){
       this.router.navigate(['/search-filter']);
       this.campoSearch.nativeElement.value = "";
       this.rebirth();
+    }
   }
 
   getBookListCart(){
@@ -63,13 +69,13 @@ export class AppComponent {
   deleteItemList(id){
     for(let b of this.booklist){
       if(b.id===id){
-      this.booklist.pop();
+        this.booklist.pop();
       }
     };
     if(this.booklist.length===0){
-      this.total=0;
+        this.total=0;
     }else{
-    this.setTotal();
+      this.setTotal();
     };
     this.IncrementaCartService.decrementaItens(this.booklist.length);
   }

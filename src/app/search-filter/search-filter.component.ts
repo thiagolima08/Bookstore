@@ -1,4 +1,5 @@
-import { Component, OnChanges, Input } from '@angular/core';
+import { Router } from '@angular/router';
+import { Component, OnChanges, Input, ChangeDetectorRef } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppServiceService } from '../app-service.service';
@@ -19,11 +20,16 @@ export class SearchFilterComponent implements OnChanges {
   booklist = [];
   @Input() input:String;
 
-  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar,private destroyComp: AppComponent){}
+  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar, private destroyComp: AppComponent, private router:Router)
+  { this.router = router }
 
   ngOnChanges(): void {
     if(this.input){
       this.books = this.AppServiceService.getBooks().filter(b => b.titulo.toLowerCase().includes(this.input.toLowerCase()) || b.autor.toLowerCase().includes(this.input.toLowerCase()))
+      if(this.books.length===0){
+        this.openSnackBar("Livro não encontrado! Tente novamente.", "Fechar")
+        this.router.navigate(["/"]);
+      }
     }
   }
 
@@ -45,7 +51,7 @@ export class SearchFilterComponent implements OnChanges {
 
   openSnackBar(message: string = "Livro adicionado ao carrinho" , action: string = "Fechar") {
     this.snackbar.open(message, action, {
-      duration: 2000,
+      duration: 2500,
     });
   }
 

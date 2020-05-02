@@ -92,22 +92,12 @@ export class AppServiceService {
   }
 ]
 
-  inputObject:BehaviorSubject<String> = new BehaviorSubject<String>(``);
-
   getBooks(){
     return this.books;
   }
 
   getBook(id){
     return this.books[id-1];
-  }
-
-  getInput(){
-    return this.inputObject;
-  }
-
-  setInput(input){
-    this.inputObject = new BehaviorSubject<String>(`${input}`);
   }
 
   constructor() { }

@@ -27,6 +27,7 @@ import { AppServiceService } from './app-service.service';
 import { IncrementaCartService } from './incrementa-cart.service';
 import { BooksellComponent } from './booksell/booksell.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
+import { EmptyComponent } from './empty/empty.component';
 
 
 @NgModule({
@@ -44,6 +45,7 @@ import { SearchFilterComponent } from './search-filter/search-filter.component';
     TerrorComponent,
     BooksellComponent,
     SearchFilterComponent,
+    EmptyComponent,
   ],
   imports: [
     BrowserModule,

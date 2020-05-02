@@ -29,7 +29,6 @@ export class NavbarComponent implements OnInit {
 
   bookSearch(){
       this.input = this.campoSearch.nativeElement.value;
-      this.AppServiceService.setInput(this.input);
       this.router.navigate(['/search-filter']);
       this.campoSearch.nativeElement.value = "";
   }
