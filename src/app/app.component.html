@@ -1,6 +1,6 @@
 <div class="navbar">
   <div class="first-container">
-    <div class="logo" (click)="destroy()">
+    <div class="logo">
       <a routerLink="">
         <img src="../../assets/1488216538.svg" alt="logo">
         <p>BOOKSTORE</p>
@@ -55,14 +55,13 @@
 <div id="side-menu">
   <button mat-button [matMenuTriggerFor]="menu" id="btnmenu">CATEGORIAS<span class="material-icons">keyboard_arrow_down</span></button>
   <mat-menu #menu="matMenu">
-    <button mat-menu-item><a routerLink="/autoajuda" (click)="destroy()">Autoajuda</a></button>
-    <button mat-menu-item><a routerLink="/didatico" (click)="destroy()">Didático</a></button>
-    <button mat-menu-item><a routerLink="/infantojuvenil" (click)="destroy()">Infantojuvenil</a></button>
-    <button mat-menu-item><a routerLink="/informatica" (click)="destroy()">Informática</a></button>
-    <button mat-menu-item><a routerLink="/romance" (click)="destroy()">Romance</a></button>
-    <button mat-menu-item><a routerLink="/terror" (click)="destroy()">Terror</a></button>
+    <button mat-menu-item><a routerLink="/autoajuda">Autoajuda</a></button>
+    <button mat-menu-item><a routerLink="/didatico">Didático</a></button>
+    <button mat-menu-item><a routerLink="/infantojuvenil">Infantojuvenil</a></button>
+    <button mat-menu-item><a routerLink="/informatica">Informática</a></button>
+    <button mat-menu-item><a routerLink="/romance">Romance</a></button>
+    <button mat-menu-item><a routerLink="/terror">Terror</a></button>
   </mat-menu>
 </div>
 <router-outlet></router-outlet>
-<app-search-filter [input]="inputPai" *ngIf="!destruir"></app-search-filter>
 <app-footer></app-footer>

@@ -22,9 +22,10 @@ export class InfantojuvenilComponent implements OnInit {
 
   IncrementaCart(id){
     this.IncrementaCartService.setItens();
-    this.openSnackBar();
+    this.booklist = this.IncrementaCartService.getBookList();
     this.booklist.push(this.AppServiceService.getBook(id));
     this.IncrementaCartService.setBookList(this.booklist);
+    this.openSnackBar();
   }
 
   openSnackBar(message: string = "Livro adicionado ao carrinho" , action: string = "Fechar") {

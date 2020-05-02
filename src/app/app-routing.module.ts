@@ -11,7 +11,6 @@ import { RomanceComponent } from './categorias/romance/romance.component';
 import { BooksellComponent } from './booksell/booksell.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
 
-
 const routes: Routes = [
   { path: '', component: BooksCardsComponent},
   { path: 'autoajuda', component: AutoajudaComponent},
