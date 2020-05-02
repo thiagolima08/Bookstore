@@ -1,4 +1,4 @@
-import { Component, ViewChild, ElementRef, Output } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { AppServiceService } from './app-service.service';
@@ -12,19 +12,16 @@ import { IncrementaCartService } from './incrementa-cart.service';
 export class AppComponent {
   title = 'bookstore';
 
-  destruir: boolean = false;
-
-  @Output() inputPai:String;
-
   @ViewChild('search') campoSearch: ElementRef;
 
   router: Router;
   number:number=0;
   booklist=[];
   total:number=0;
+  input:String;
   history=[];
 
-  constructor(private IncrementaCartService: IncrementaCartService, router: Router) {
+  constructor(private IncrementaCartService: IncrementaCartService, private AppServiceService: AppServiceService, router: Router) {
     this.router = router;
    }
 
@@ -32,24 +29,16 @@ export class AppComponent {
     this.IncrementaCartService.itens.subscribe(n => this.number = n);
   }
 
-  destroy(){
-    this.destruir = true;
-  }
-
-  rebirth(){
-    this.destruir = false;
-  }
-
   bookSearch(){
-    this.inputPai = this.campoSearch.nativeElement.value;
-    this.history.push(this.inputPai);
+    this.input = this.campoSearch.nativeElement.value;
+    this.AppServiceService.setInput(this.input)
+    this.history.push(this.input);
     if(this.history.length > 2){
       this.history.shift()
     }
-    if((this.inputPai) && (this.inputPai != this.history[this.history.length-2])){
+    if((this.input) && (this.input != this.history[this.history.length-2])){
       this.router.navigate(['/search-filter']);
       this.campoSearch.nativeElement.value = "";
-      this.rebirth();
     }
   }
 

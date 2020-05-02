@@ -10,9 +10,6 @@ import { TerrorComponent } from './categorias/terror/terror.component';
 import { RomanceComponent } from './categorias/romance/romance.component';
 import { BooksellComponent } from './booksell/booksell.component';
 import { SearchFilterComponent } from './search-filter/search-filter.component';
-import { EmptyComponent } from './empty/empty.component';
-
-
 
 const routes: Routes = [
   { path: '', component: BooksCardsComponent},
@@ -29,7 +26,7 @@ const routes: Routes = [
   { path: 'didatico/booksell/:id', component: BooksellComponent},
   { path: 'autoajuda/booksell/:id', component: BooksellComponent},
   { path: 'informatica/booksell/:id', component: BooksellComponent},
-  { path: 'search-filter', component: EmptyComponent},
+  { path: 'search-filter', component: SearchFilterComponent},
   { path: 'search-filter/booksell/:id', component: BooksellComponent},
 ];
 

@@ -1,5 +1,5 @@
 import { Router } from '@angular/router';
-import { Component, OnChanges, Input, ChangeDetectorRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppServiceService } from '../app-service.service';
@@ -14,16 +14,17 @@ import { AppComponent } from './../app.component';
 })
 
 
-export class SearchFilterComponent implements OnChanges {
+export class SearchFilterComponent {
 
   books=[];
   booklist = [];
-  @Input() input:String;
+  input:String;
 
   constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar, private destroyComp: AppComponent, private router:Router)
   { this.router = router }
 
-  ngOnChanges(): void {
+  ngDoCheck(){
+    this.input = this.AppServiceService.getInput();
     if(this.input){
       this.books = this.AppServiceService.getBooks().filter(b => b.titulo.toLowerCase().includes(this.input.toLowerCase()) || b.autor.toLowerCase().includes(this.input.toLowerCase()))
       if(this.books.length===0){
@@ -31,14 +32,6 @@ export class SearchFilterComponent implements OnChanges {
         this.router.navigate(["/"]);
       }
     }
-  }
-
-  ngOnDestroy(){
-    console.log("ngOnDestroy")
-  }
-
-  destruir(){
-    this.destroyComp.destroy();
   }
 
   IncrementaCart(id){

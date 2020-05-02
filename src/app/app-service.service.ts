@@ -92,6 +92,14 @@ export class AppServiceService {
   }
 ]
 
+  input:String;
+
+  getInput(){
+    return this.input;
+  }
+  setInput(input){
+    this.input = input;
+  }
   getBooks(){
     return this.books;
   }

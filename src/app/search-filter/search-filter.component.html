@@ -5,7 +5,6 @@
         <button mat-mini-fab color="warn" style="font-size: 16px;" matTooltip="Adicionar ao carrinho"
         aria-label="Button that displays a tooltip when focused or hovered over" (click)="IncrementaCart(b.id)">+</button>
       </mat-card-actions>
-      <div (click)="destruir()">
         <a [routerLink]="['booksell',b.id]" style="text-decoration: none;color: rgba(0, 0, 0, 0.87);">
           <img mat-card-image src="{{b.imageUrl}}" alt="Photo of book {{b.titulo}}">
           <mat-card-header style="height: 90px;">
@@ -17,7 +16,6 @@
             </p>
           </mat-card-content>
         </a>
-      </div>
     </mat-card>
   </div>
 </div>
