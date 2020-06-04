@@ -35,3 +35,9 @@
 }
 
 
+@media screen and (min-width: 700px){
+  .container{
+    min-height: -webkit-fill-available;
+    align-items: start;
+  }
+}

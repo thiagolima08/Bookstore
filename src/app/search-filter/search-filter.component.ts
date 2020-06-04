@@ -4,8 +4,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 
 import { AppServiceService } from '../app-service.service';
 import { IncrementaCartService } from './../incrementa-cart.service';
-import { AppComponent } from './../app.component';
-
 
 @Component({
   selector: 'app-search-filter',
@@ -20,7 +18,7 @@ export class SearchFilterComponent {
   booklist = [];
   input:String;
 
-  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar, private destroyComp: AppComponent, private router:Router)
+  constructor(private AppServiceService: AppServiceService, private IncrementaCartService: IncrementaCartService, private snackbar: MatSnackBar, private router:Router)
   { this.router = router }
 
   ngDoCheck(){
