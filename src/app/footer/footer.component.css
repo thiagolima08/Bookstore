@@ -1,0 +1,11 @@
+.social{
+  height: 40px;
+  background-color: #9EA2ED;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.social svg{
+  margin-right: 10px;
+}
